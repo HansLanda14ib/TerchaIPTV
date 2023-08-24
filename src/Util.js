@@ -16,7 +16,7 @@ const Util = () => {
         };
 
         // Making a GET request
-        axios.get(apiUrl, {headers,referrerPolicy: "unsafe-url"})
+        axios.get(apiUrl, {headers})
             .then(response => {
                 const token = response.data.token;
                 setAuthToken(token);
