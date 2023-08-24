@@ -15,7 +15,7 @@ const Util = () => {
             'Authorization': `Bearer ${authToken}`
         };
 
-        // Making a GET request
+        // Making a GET request, with no policy
         axios.get(apiUrl, {headers})
             .then(response => {
                 const token = response.data.token;
