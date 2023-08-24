@@ -1,8 +1,10 @@
-import { useState } from "react";
+import {useState} from "react";
 import axios from "axios";
-import { Input, Button } from "antd";
-import { LinkOutlined } from "@ant-design/icons";
-const apiUrl = '/proxy/codes';
+import {Input, Button} from "antd";
+import {LinkOutlined} from "@ant-design/icons";
+
+const apiUrl = 'http://176.123.9.60:3000/v1/codes';
+
 const Util = () => {
     const [authToken, setAuthToken] = useState('');
     const [m3uUrl, setM3uUrl] = useState('');
@@ -14,7 +16,7 @@ const Util = () => {
         };
 
         // Making a GET request
-        axios.get(apiUrl, { headers })
+        axios.get(apiUrl, {headers})
             .then(response => {
                 const token = response.data.token;
                 setAuthToken(token);
@@ -30,7 +32,7 @@ const Util = () => {
                 };
 
                 // Making a POST request
-                axios.post('http://176.123.9.60:3000/v1/subscriptions', requestData, { headers })
+                axios.post('http://176.123.9.60:3000/v1/subscriptions', requestData, {headers})
                     .then(response => {
                         const user = response.data.iptv.user;
                         const pass = response.data.iptv.pass;
@@ -58,8 +60,8 @@ const Util = () => {
     };
 
     function parseJwt(token) {
-        const base64Url = token?.split('.')[1];
-        const base64 = base64Url?.replace(/-/g, '+').replace(/_/g, '/');
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         return JSON.parse(atob(base64));
     }
 
@@ -73,8 +75,9 @@ const Util = () => {
                 minHeight: "100vh"
             }}
         >
-            <p style={{ marginBottom: "1rem", textAlign: "center" }}>
-               DISCLAIMER: The information on this site is intended for educational purposes only and is not intended as professional advice
+            <p style={{marginBottom: "1rem", textAlign: "center"}}>
+                DISCLAIMER: The information on this site is intended for educational purposes only and is not intended
+                as professional advice
                 . Please ensure you have proper authorization to generate the M3u File.
             </p>
             <h1>Streaming Live Events</h1>
@@ -82,14 +85,14 @@ const Util = () => {
                 placeholder="Enter Auth Token"
                 value={authToken}
                 onChange={handleTokenChange}
-                style={{ margin: "1em", maxWidth: "300px" }}
+                style={{margin: "1em", maxWidth: "300px"}}
             />
-            <Button type="primary" onClick={handleTokenSubmit} style={{ margin: "1em" }}>
+            <Button type="primary" onClick={handleTokenSubmit} style={{margin: "1em"}}>
                 Get M3U URL
             </Button>
             {displayM3u && (
-                <div style={{ marginTop: "1em" }}>
-                    <Button onClick={handleOpenM3u} icon={<LinkOutlined />}>
+                <div style={{marginTop: "1em"}}>
+                    <Button onClick={handleOpenM3u} icon={<LinkOutlined/>}>
                         Open M3U URL
                     </Button>
 
