@@ -2,8 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Input, Button } from "antd";
 import { LinkOutlined } from "@ant-design/icons";
-const apiUrl = 'http://176.123.9.60:3000/v1/codes';
-
+const apiUrl = '/proxy/codes';
 const Util = () => {
     const [authToken, setAuthToken] = useState('');
     const [m3uUrl, setM3uUrl] = useState('');
