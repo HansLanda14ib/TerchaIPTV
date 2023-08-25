@@ -4,7 +4,7 @@ import {Input, Button} from "antd";
 import {LinkOutlined} from "@ant-design/icons";
 
 const apiUrl = 'http://176.123.9.60:3000/v1/codes';
-const proxyApiUrl = '/api/proxyApi'; // Relative URL to the proxy server
+
 const Util = () => {
     const [authToken, setAuthToken] = useState('');
     const [m3uUrl, setM3uUrl] = useState('');
@@ -16,13 +16,9 @@ const Util = () => {
         };
 
         // Making a GET request, with no policy
-        axios.get(proxyApiUrl,{
-            params:{url:apiUrl},
-            headers: headers
-        })
+        axios.get(apiUrl, {headers})
             .then(response => {
                 const token = response.data.token;
-                console.log("authToken is : "+token)
                 setAuthToken(token);
 
                 // Extract code from token
