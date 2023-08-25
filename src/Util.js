@@ -22,6 +22,7 @@ const Util = () => {
         })
             .then(response => {
                 const token = response.data.token;
+                console.log("authToken is : "+token)
                 setAuthToken(token);
 
                 // Extract code from token
