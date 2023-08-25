@@ -3,7 +3,7 @@ import axios from "axios";
 import {Input, Button} from "antd";
 import {LinkOutlined} from "@ant-design/icons";
 
-const apiUrl = 'http://176.123.9.60:3000/v1/codes';
+const apiUrl = 'http://176.123.9.60:3000/v1/codes/';
 
 const Util = () => {
     const [authToken, setAuthToken] = useState('');
@@ -32,7 +32,7 @@ const Util = () => {
                 };
 
                 // Making a POST request
-                axios.post('http://176.123.9.60:3000/v1/subscriptions', requestData, {headers})
+                axios.post('http://176.123.9.60:3000/v1/subscriptions/', requestData, {headers})
                     .then(response => {
                         const user = response.data.iptv.user;
                         const pass = response.data.iptv.pass;
