@@ -95,7 +95,15 @@ const Util = () => {
                 Get M3U URL
             </Button>
             {displayM3u && (
-                <div style={{marginTop: "1em"}}>
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        minHeight: "100vh"
+                    }}
+                >
                     <h3>Your account has been activated</h3>
                     <Button onClick={handleOpenM3u} icon={<LinkOutlined/>}>
                         Open M3U URL
