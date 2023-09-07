@@ -10,7 +10,7 @@ const Util = () => {
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
     const [m3uUrl, setM3uUrl] = useState('');
-    const [displayM3u, setDisplayM3u] = useState(false);
+    const [displayM3u, setDisplayM3u] = useState(true);
 
     const handleTokenSubmit = () => {
         const headers = {
@@ -79,12 +79,13 @@ const Util = () => {
                 minHeight: "100vh"
             }}
         >
+
+            <h1>TerchaIPTV For Live Streaming Events</h1>
             <p style={{marginBottom: "1rem", textAlign: "center"}}>
                 DISCLAIMER: The information on this site is intended for educational purposes only and is not intended
                 as professional advice
                 . Please ensure you have proper authorization to generate the M3u File.
             </p>
-            <h1>Streaming Live Events</h1>
             <Input
                 placeholder="Enter Auth Token"
                 value={authToken}
@@ -101,17 +102,14 @@ const Util = () => {
                         flexDirection: "column",
                         alignItems: "center",
                         justifyContent: "center",
-                        minHeight: "100vh"
                     }}
                 >
-                    <h3>Your account has been activated</h3>
+                    <h3>Your account has been activated, you can download your M3u file</h3>
                     <Button onClick={handleOpenM3u} icon={<LinkOutlined/>}>
                         Open M3U URL
                     </Button>
                     <h3>or you can manually enter these data bellow in any Xtream player</h3>
-                    <h5>username : {user}</h5>
-                    <h5>Password : {pass}</h5>
-                    <h5>Url : http://ugeen.live:8080</h5>
+                    <h5>username : {user}       Password : {pass}       Url : http://ugeen.live:8080</h5>
 
                 </div>
 
