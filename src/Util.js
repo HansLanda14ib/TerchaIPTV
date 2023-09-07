@@ -7,7 +7,9 @@ const apiUrl = 'http://176.123.9.60:3000/v1/codes/';
 
 const Util = () => {
     const [authToken, setAuthToken] = useState('');
-    const [m3uUrl, setM3uUrl] = useState('');
+    const [user, setUser] = useState('');
+    const [pass, setPass] = useState('');
+    //const [m3uUrl, setM3uUrl] = useState('');
     const [displayM3u, setDisplayM3u] = useState(false);
 
     const handleTokenSubmit = () => {
@@ -34,14 +36,16 @@ const Util = () => {
                 // Making a POST request
                 axios.post('http://176.123.9.60:3000/v1/subscriptions/', requestData, {headers})
                     .then(response => {
-                        const user = response.data.iptv.user;
-                        const pass = response.data.iptv.pass;
-                        const newM3uUrl = `http://ugeen.live:8080/get.php?username=${user}&password=${pass}&type=m3u`;
-                        setM3uUrl(newM3uUrl);
+                        //const user = setUser(response.data.iptv.user);
+                        //const pass = response.data.iptv.pass;
+                        setUser(response.data.iptv.user);
+                        setPass(response.data.iptv.pass);
+                        //const newM3uUrl = `http://ugeen.live:8080/get.php?username=${user}&password=${pass}&type=m3u`;
+                        //setM3uUrl(newM3uUrl);
                         setDisplayM3u(true); // Show the generated M3U URL
                     })
                     .catch(error => {
-                        console.error('Error generating M3U URL:', error);
+                        console.error('Error Activating your account :', error);
                     });
             })
             .catch(error => {
@@ -49,11 +53,11 @@ const Util = () => {
             });
     };
 
-    const handleOpenM3u = () => {
+    /* const handleOpenM3u = () => {
         if (m3uUrl) {
             window.open(m3uUrl, '_blank');
         }
-    };
+    }; */
 
     const handleTokenChange = (event) => {
         setAuthToken(event.target.value);
@@ -92,9 +96,7 @@ const Util = () => {
             </Button>
             {displayM3u && (
                 <div style={{marginTop: "1em"}}>
-                    <Button onClick={handleOpenM3u} icon={<LinkOutlined/>}>
-                        Open M3U URL
-                    </Button>
+                    <h1>user : {user}, pass:{pass}</h1>
 
                 </div>
 
