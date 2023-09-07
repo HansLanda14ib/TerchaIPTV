@@ -36,7 +36,7 @@ const Util = () => {
                 // Making a POST request
                 axios.post('http://176.123.9.60:3000/v1/subscriptions/', requestData, {headers})
                     .then(response => {
-                        const user = setUser(response.data.iptv.user);
+                        const user = response.data.iptv.user;
                         const pass = response.data.iptv.pass;
                         setUser(response.data.iptv.user);
                         setPass(response.data.iptv.pass);
@@ -96,14 +96,14 @@ const Util = () => {
             </Button>
             {displayM3u && (
                 <div style={{marginTop: "1em"}}>
-                    <h1>Your account has been activated</h1>
+                    <h3>Your account has been activated</h3>
                     <Button onClick={handleOpenM3u} icon={<LinkOutlined/>}>
                         Open M3U URL
                     </Button>
-                    <h1>or you can manually enter these data bellow in any Xtream player</h1>
-                    <h2>username : {user}</h2>
-                    <h2>Password : {pass}</h2>
-                    <h2>Url : http://ugeen.live:8080</h2>
+                    <h3>or you can manually enter these data bellow in any Xtream player</h3>
+                    <h5>username : {user}</h5>
+                    <h5>Password : {pass}</h5>
+                    <h5>Url : http://ugeen.live:8080</h5>
 
                 </div>
 
