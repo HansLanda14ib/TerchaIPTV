@@ -10,7 +10,7 @@ const Util = () => {
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
     const [m3uUrl, setM3uUrl] = useState('');
-    const [displayM3u, setDisplayM3u] = useState(true);
+    const [displayM3u, setDisplayM3u] = useState(false);
 
     const handleTokenSubmit = () => {
         const headers = {
