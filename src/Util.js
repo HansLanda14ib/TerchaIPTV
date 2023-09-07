@@ -9,7 +9,7 @@ const Util = () => {
     const [authToken, setAuthToken] = useState('');
     const [user, setUser] = useState('');
     const [pass, setPass] = useState('');
-    //const [m3uUrl, setM3uUrl] = useState('');
+    const [m3uUrl, setM3uUrl] = useState('');
     const [displayM3u, setDisplayM3u] = useState(false);
 
     const handleTokenSubmit = () => {
@@ -36,12 +36,12 @@ const Util = () => {
                 // Making a POST request
                 axios.post('http://176.123.9.60:3000/v1/subscriptions/', requestData, {headers})
                     .then(response => {
-                        //const user = setUser(response.data.iptv.user);
-                        //const pass = response.data.iptv.pass;
+                        const user = setUser(response.data.iptv.user);
+                        const pass = response.data.iptv.pass;
                         setUser(response.data.iptv.user);
                         setPass(response.data.iptv.pass);
-                        //const newM3uUrl = `http://ugeen.live:8080/get.php?username=${user}&password=${pass}&type=m3u`;
-                        //setM3uUrl(newM3uUrl);
+                        const newM3uUrl = `http://ugeen.live:8080/get.php?username=${user}&password=${pass}&type=m3u`;
+                        setM3uUrl(newM3uUrl);
                         setDisplayM3u(true); // Show the generated M3U URL
                     })
                     .catch(error => {
@@ -53,11 +53,11 @@ const Util = () => {
             });
     };
 
-    /* const handleOpenM3u = () => {
+     const handleOpenM3u = () => {
         if (m3uUrl) {
             window.open(m3uUrl, '_blank');
         }
-    }; */
+    };
 
     const handleTokenChange = (event) => {
         setAuthToken(event.target.value);
@@ -96,7 +96,14 @@ const Util = () => {
             </Button>
             {displayM3u && (
                 <div style={{marginTop: "1em"}}>
-                    <h1>user : {user}, pass:{pass}</h1>
+                    <h1>Your account has been activated</h1>
+                    <Button onClick={handleOpenM3u} icon={<LinkOutlined/>}>
+                        Open M3U URL
+                    </Button>
+                    <h1>or you can manually enter these data bellow in any Xtream player</h1>
+                    <h2>username : {user}</h2>
+                    <h2>Password : {pass}</h2>
+                    <h2>Url : http://ugeen.live:8080</h2>
 
                 </div>
 
